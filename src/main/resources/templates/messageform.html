@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>messageform</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet" />
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="jumbotron">
+
+        <h1>Twitter World!</h1>
+        <p></p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Twitter More</a></p>
+
+    </div>
+
+    <form class="form-horizontal" action="#" th:action="@{/process}" th:object="${message}" method="post">
+        <div class="form-group">
+            <input type="hidden" th:field="*{id}" />
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="Date">Date</label>
+            <div class="col-md-10">
+                <input id="Date" type="text" th:field="*{posteddate}" />
+                <span th:if="${#fields.hasErrors('posteddate')}"
+                      th:errors="*{posteddate}"></span><br />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="Sender">Sender</label>
+            <div class="col-md-10">
+                <input id="Sender" type="text" th:field="*{sentby}" />
+                <span th:if="${#fields.hasErrors('sentby')}"
+                      th:errors="*{sentby}"></span><br />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="Message">Message</label>
+            <div class="col-md-10">
+                <textarea id="Message" rows="3" th:field="*{content}"></textarea>
+                <span th:if="${#fields.hasErrors('content')}"
+                      th:errors="*{content}"></span>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-2">
+            <p></p>
+            </div>
+            <div class="col-md-10">
+            <input class="btn btn-default" type="submit" value="Submit" />
+            </div>
+        </div>
+    </form>
+</div>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>
